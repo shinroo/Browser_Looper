@@ -49,6 +49,8 @@ long_sleep=180
 # every multiple of long in the URL array will be displayed longer, 0 = all displayed equally
 long=3
 
+# set this variable to 0 to disable python square, 1 to enable
+python=1
 
 function OPEN_URL {
     chromium-browser --no-first-run --noerrdialogs --kiosk $1 &
@@ -57,7 +59,7 @@ function OPEN_URL {
 }
 
 function SQUARE {
-    python2 /home/pi/.config/lxsession/LXDE-pi/main.py $1 &
+    python2 main.py $1 &
 }
 
 function UNSQUARE {
@@ -79,18 +81,33 @@ then
             then
               if [ $(($counter % $long)) -eq 0 ]
               then
-                  SQUARE ${TAGS[$(($arraycounter))]}
-                  OPEN_URL $URL $long_sleep
-                  UNSQUARE
+                  if [ $python -eq 1 ]
+                  then
+                    SQUARE ${TAGS[$(($arraycounter))]}
+                    OPEN_URL $URL $long_sleep
+                    UNSQUARE
+                  else
+                    OPEN_URL $URL $long_sleep
+                  fi
               else
+                if [ $python -eq 1 ]
+                then
                   SQUARE ${TAGS[$(($arraycounter))]}
                   OPEN_URL $URL $default_sleep
                   UNSQUARE
+                else
+                  OPEN_URL $URL $default_sleep
+                fi
               fi
             else
-              SQUARE ${TAGS[$(($arraycounter))]}
-              OPEN_URL $URL $default_sleep
-              UNSQUARE
+              if [ $python -eq 1 ]
+              then
+                SQUARE ${TAGS[$(($arraycounter))]}
+                OPEN_URL $URL $default_sleep
+                UNSQUARE
+              else
+                OPEN_URL $URL $default_sleep
+              fi
             fi
             arraycounter=$((arraycounter+1))
 	          counter=$((counter+1))
@@ -109,18 +126,33 @@ else
           then
             if [ $(($counter % $long)) -eq 0 ]
             then
+              if [ $python -eq 1 ]
+              then
                 SQUARE ${TAGS[$(($arraycounter))]}
                 OPEN_URL $URL $long_sleep
                 UNSQUARE
+              else
+                OPEN_URL $URL $long_sleep
+              fi
             else
+              if [ $python -eq 1 ]
+              then
                 SQUARE ${TAGS[$(($arraycounter))]}
                 OPEN_URL $URL $default_sleep
                 UNSQUARE
+              else
+                OPEN_URL $URL $default_sleep
+              fi
             fi
           else
-            SQUARE ${TAGS[$(($arraycounter))]}
-            OPEN_URL $URL $default_sleep
-            UNSQUARE
+            if [ $python -eq 1 ]
+            then
+              SQUARE ${TAGS[$(($arraycounter))]}
+              OPEN_URL $URL $default_sleep
+              UNSQUARE
+            else
+              OPEN_URL $URL $default_sleep
+            fi
           fi
           arraycounter=$((arraycounter+1))
         done
