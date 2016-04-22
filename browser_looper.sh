@@ -14,6 +14,12 @@ IFS=$'\n\t'
 #
 
 #
+# This script uses the chromium browser
+# if you need to install it please use sudo apt-get install chromium-browser
+# or a similar command for your os
+#
+
+#
 # This script makes use of a python script developed by Emil Milanov
 # download link: https://github.com/emomicrowave/top-label
 # please place the main.py file in the same directory as this script
@@ -21,46 +27,16 @@ IFS=$'\n\t'
 
 # Array containing the URLs to be cycled through, URLs should be between ''
 URLs=(
-  #de
-  'https://analytics.google.com/analytics/web/#realtime/rt-overview/a45666214w76390421p78982821/'
-  #fr
-  'https://analytics.google.com/analytics/web/#realtime/rt-overview/a45666214w94899173p98926757/'
-  #dashboard
-  'https://sites.google.com/a/hometogo.de/raspberrypi/organic-search'
-  #nl
-  'https://analytics.google.com/analytics/web/#realtime/rt-overview/a45666214w96410452p100559082/'
-  #pl
-  'https://analytics.google.com/analytics/web/#realtime/rt-overview/a45666214w95347242p99408504/'
-  #dashboard
-  'https://sites.google.com/a/hometogo.de/raspberrypi/dashboard-users'
-  #uk
-  'https://analytics.google.com/analytics/web/#realtime/rt-overview/a45666214w99535565p103509174/'
-  #it
-  'https://analytics.google.com/analytics/web/#realtime/rt-overview/a45666214w99824667p103742976/'
-  #dashboard
-  'https://sites.google.com/a/hometogo.de/raspberrypi/organic-search'
-  #es
-  'https://analytics.google.com/analytics/web/#realtime/rt-overview/a45666214w100636822p104521485/'
-  #com
-  'https://analytics.google.com/analytics/web/#realtime/rt-overview/a45666214w100636822p104521485/'
-  #dashboard
-  'https://sites.google.com/a/hometogo.de/raspberrypi/dashboard-users'
+  'http://www.google.com'
+  'http://www.reddit.com'
+  'http://www.4chan.org'
 )
 
 # Array containing the tags for the various URLS
 TAGS=(
-  'DE'
-  'FR'
-  ' '
-  'NL'
-  'PL'
-  ' '
-  'UK'
-  'IT'
-  ' '
-  'ES'
-  'COM'
-  ' '
+  'google'
+  'reddit'
+  '4chan'
 )
 
 # set this variable to the number of times you want to loop, 0 for infinite
