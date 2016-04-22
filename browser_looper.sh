@@ -89,7 +89,7 @@ then
     while true
     do
         arraycounter=0
-	counter=1
+	      counter=1
         for URL in "${URLs[@]}"
         do
             # check if some URLs should be displayed longer
@@ -111,7 +111,7 @@ then
               UNSQUARE
             fi
             arraycounter=$((arraycounter+1))
-	    counter=$((counter+1))
+	          counter=$((counter+1))
         done
     done
 else
