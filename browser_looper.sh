@@ -13,6 +13,12 @@ IFS=$'\n\t'
 # the OPEN_URL function accordingly.
 #
 
+#
+# This script makes use of a python script developed by Emil Milanov
+# download link: https://github.com/emomicrowave/top-label
+# please place the main.py file in the same directory as this script
+#
+
 # Array containing the URLs to be cycled through, URLs should be between ''
 URLs=(
   #de
